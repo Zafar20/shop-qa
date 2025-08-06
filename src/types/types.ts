@@ -21,6 +21,17 @@ export interface ILogin {
 }
 
 
+export interface IUpdateUser {
+    username: string
+    password: string
+    email: string
+}
+
+export interface IUpdateUserPhoto {
+    avatar: null | string;
+}
+
+
 
 export interface IProduct {
   id: number

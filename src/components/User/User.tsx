@@ -38,7 +38,6 @@ const User:FC = () => {
     { url: '/profile', name: 'Профиль', icon: userIcon },
   ]
 
-  const addAvatarMutation = useAddAvatar();
 
   const openModal = () => {
     setIsModalOpen(true)
@@ -58,20 +57,6 @@ const User:FC = () => {
   }
 
 
-  const handleFileChange = async (event: any) => {
-    const file = event.target.files[0];
-    try {
-      const formData = new FormData();
-      formData.append('avatar', file);
-      let response =   await addAvatarMutation.mutateAsync({id:user?.id, formData});
-      const newAvatarUrl = response.data.avatar; // Предположим, что сервер возвращает новый URL изображения
-      setAvatarUrl(newAvatarUrl); // Обновляем URL изображения в состоянии
-      console.log('Картинка добавлена');
-      
-    } catch (error) {
-      console.error('Ошибка загрузки картинки:', error);
-    }
-  };
 
 
 
@@ -84,9 +69,8 @@ const User:FC = () => {
         <>
          <div className={s.user_info}>
           <div  className={s.user_avatar}>
-          <input type="file" className={s.user_file} onChange={handleFileChange}/>
           { !user?.avatar  && <img src={ava} alt=""/>}
-          { user?.avatar && <img src={avatarUrl || `https://reactapi.pythonanywhere.com${user?.avatar}`} alt="" className={s.user_img} />}
+          { user?.avatar && <img src={avatarUrl || `https://prowebapi.tech${user?.avatar}`} alt="" className={s.user_img} />}
           
           </div>
           <h2 className={s.user_name}>{user?.username}</h2>

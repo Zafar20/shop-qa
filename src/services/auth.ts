@@ -1,5 +1,5 @@
 import api from './api'
-import {  useMutation, useQuery } from '@tanstack/react-query';
+import {  useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import useStore from '../store/userStore';
 import { ILogin,  IRegister } from '../types/types';
 
@@ -34,14 +34,22 @@ export const useRegisterMutation = () => {
   return useMutation((userData: IRegister) => api.post('/auth/register', userData));
 };
 
-// Хук для добавления аватарки
-export const useAddAvatar = () => {
-  const setAvatar = useStore(state => state.setAvatar); 
-  return useMutation((info:any) => api.put(`/auth/users/${info.id}/update/avatar`, info.formData),{
-    onSuccess:({data}) => {
-      console.log(data);
-      setAvatar(data.avatar)
-    }
+
+export const useUserUpdate = () => {
+  const queryClient = useQueryClient();
+  return useMutation(({data, id}:any) => api.put(`/auth/users/${id}/update`, data), {
+    onSuccess: ({data}) => {
+      queryClient.invalidateQueries(['current']);
+    },
+  });
+};
+
+export const useUserUpdatePhoto = () => {
+  const queryClient = useQueryClient();
+  return useMutation(({data, id}: any) => api.put(`/auth/users/${id}/update/avatar`, data), {
+    onSuccess: ({data}) => {
+      queryClient.invalidateQueries(['current']);
+    },
   });
 };
 
