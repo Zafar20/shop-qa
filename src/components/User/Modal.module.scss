@@ -1,0 +1,44 @@
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+
+    align-items: center;
+    z-index: 1000;
+    &_block {
+        max-width: 450px;
+        width: 100%;
+        padding: 20px;
+        border-radius: 20px;
+        background:white;
+        box-shadow: 0 0 30px 0 black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        &_title {
+            color: black;
+            font-size: 22px;
+            text-align: center;
+        }
+        &_btns {
+            display: flex;
+            gap: 30px;
+            button {
+                padding: 5px 20px;
+                border-radius: 20px;
+                font-size: 20px;
+                color: black;
+                &:hover {
+                    background: black;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+
+

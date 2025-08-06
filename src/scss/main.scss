@@ -1,0 +1,50 @@
+@import './fonts.scss';
+@import './сommon/form.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'OpenSans';
+}
+
+a {
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+}
+
+button,input {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: none;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0 50px;
+    margin-top: 45px;
+    margin-bottom: 45px;
+
+    @media (max-width:1000px) {
+        width: 100%;
+        padding: 0 20px;
+    }
+}
+
+body {
+    background: #FAFAFB;
+}
+
+
+button:disabled {
+    background: rgba(254, 115, 76, 0.30)
+}
+
+.previous.disabled,
+.next.disabled {
+    display: none !important;
+}

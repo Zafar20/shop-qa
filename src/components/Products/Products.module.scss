@@ -1,0 +1,122 @@
+.products {
+    &_filter {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @media (max-width:700px) {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+        }
+        
+        &_left {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            @media (max-width:700px) {
+              margin-top: 30px;
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+            }
+        }
+
+    }
+    &_list {
+        margin-top: 60px;
+        margin-bottom: 60px;
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 45px;
+        @media (max-width:1200px) {
+            grid-template-columns: repeat(2,1fr);
+            gap: 20px;
+        }
+        @media (max-width:450px) {
+            grid-template-columns: 1fr;
+        }
+    }
+    &_item{
+        position: relative;
+        border-radius: 18.21px;
+        box-shadow: 18px 18px 36px 0 rgba(211, 209, 216, 0.25);
+        background: #fff;
+        &_info {
+            margin: 0 20px 20px 20px;
+        }
+        &_img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+        &_title {
+            color: rgb(0, 0, 0);
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 25px;
+            margin: 15px 0;
+        }
+        &_text {
+            color: rgb(91, 91, 94);
+            font-size: 14.57px;
+            font-weight: 400;
+            line-height: 20px;
+
+        }
+        &_link {
+            background: rgb(85, 85, 108);
+            color: white;
+            margin-top: 10px;
+            border-radius: 20px;
+            padding: 5px 10px;
+            display: inline-block;
+        }
+        &_price {
+            border-radius: 121.43px;
+            box-shadow: 0px 7.1px 28.4px 0px rgba(254, 114, 76, 0.2);
+            background: rgb(255, 255, 255);
+            font-size: 20px;
+            font-weight: 400;
+            color: #111719;
+            position: absolute;
+            left: 12px;
+            top: 12px;
+            padding: 7px 15px;
+
+            span {
+                color: #fe724c;
+            }
+        }
+        &_rating{
+            border-radius: 136px;
+            box-shadow: 0px 6.07px 24.29px 0px rgba(254, 114, 76, 0.2);
+            background: rgb(255, 255, 255);
+            width: 70px;
+            height: 40px;
+            color: rgb(0, 0, 0);
+            font-size: 12.14px;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            margin-top: -20px;
+            position: relative;
+        }
+        &_btn {
+            width: 34px;
+            height: 34px;
+            box-shadow: 0px 8.5px 18.21px 0px rgba(254, 114, 76, 0.4);
+            background: rgb(254, 114, 76);
+            border-radius: 50%;
+            color: white;
+            position: absolute;
+            top: 13px;
+            right: 13px;
+        }
+    }
+}
+
+
+

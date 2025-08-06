@@ -1,0 +1,110 @@
+.product {
+    &_top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @media (max-width: 700px) {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        &_link {
+            height: 38px;
+            width: 38px;
+            background: white;
+            box-shadow: 5px 10px 20px 0 rgba(211, 209, 216, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+    }
+    &_item {
+        margin-top: 34px;
+        border-radius: 20px;
+        box-shadow: 0 0 19px -8px rgba(0, 0, 0, 0.25);
+        background: #fff;
+        border-radius: 18px;
+        overflow: hidden;
+        display: flex;
+        height: 300px;
+        &_left {
+            width: 45%;
+            &_img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+        }
+        &_right {
+            padding: 12px 12px 12px 42px;
+            width: 55%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            &_title {
+                font-family: var(--font-family);
+                font-weight: 700;
+                font-size: 20px;
+                color: #000;
+                margin-bottom: 9px;
+            }
+            &_text {
+                font-family: var(--font-family);
+                font-weight: 400;
+                font-size: 16px;
+                color: #000;
+            }
+            &_price {
+                display: flex;
+                gap: 32px;
+                &_text {
+                    font-weight: 400;
+                    font-size: 16px;
+                    color: #000;
+                }
+                &_number {
+                    font-weight: 400;
+                    font-size: 19px;
+                    text-align: right;
+                    color: #000;
+                    span {
+                        color: #9796a1;
+                        margin-left: 7px;
+                    }
+                }
+            }
+            &_rating {
+                display: flex;
+                gap: 32px;
+                &_text {
+                    font-weight: 400;
+                    font-size: 16px;
+                    color: #000;
+                }
+                &_number {
+                    border-radius: 136px;
+                    width: 51px;
+                    height: 29px;
+                    box-shadow: 0 6px 24px 0 rgba(254, 114, 76, 0.2);
+                    background: #fff;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 4px;
+                    font-weight: 600;
+                    font-size: 12px;
+                    color: #000;
+                }
+            }
+        }
+        &_info2{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+    }
+}

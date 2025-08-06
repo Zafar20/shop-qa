@@ -1,0 +1,166 @@
+.cart {
+    &_total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 60px;
+        border-bottom: 1px solid #f1f2f3;
+        padding-bottom: 10px;
+        &_text {
+            font-weight: 400;
+            font-size: 16px;
+            color: #000;
+        }
+        &_price {
+            font-weight: 400;
+            font-size: 19px;
+            text-align: right;
+            color: #000;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            span {
+            font-weight: 400;
+            font-size: 14px;
+            color: #9796a1;
+            }
+        }
+    }
+    &_list {
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+    &_item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        // width: 70%;
+        padding: 6px 12px 6px 6px;
+        box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.25);
+        background: #fff;  
+        border-radius: 12px;
+        &_left {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            &_img {
+                // max-width: 250px;
+                width: 200px;
+                height: 150px;
+                @media (max-width:576px) {
+                    width: 150px;
+                    height: 110px;
+                }
+                img {
+                    border-radius: 20px;
+                    object-fit: cover;
+                    width: 100%;
+                    height: 100%;
+                }
+                
+            }
+            &_box {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                @media (max-width:576px) {
+                    gap: 10px;
+                }
+                h2 {
+                    color: rgb(0, 0, 0);
+                    font-size: 24px;
+                    font-weight: 600;
+                    @media (max-width:576px) {
+                        font-size: 14px;
+                    }
+                }
+                
+                span {
+                    color: rgb(254, 114, 76);
+                    font-size: 24px;
+                    font-weight: 600;
+                    @media (max-width:576px) {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+        &_right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            @media (max-width:576px) {
+              gap: 10px;
+            }
+            span {
+                font-size: 20px;
+            }
+            &_minus {
+                width: 40px;
+                height: 40px;
+                border: 1px solid rgb(254, 114, 76);
+                border-radius: 50%;
+                font-size: 20px;
+                box-shadow: 0px 20px 30px 0px rgb(238, 240, 242);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                @media (max-width:576px) {
+                    width: 20px;
+                    height: 20px;
+                }
+
+            }
+            &_plus {
+                border-radius: 50%;
+                box-shadow: 0px 7px 15px 0px rgba(254, 114, 76, 0.4);
+                background: rgb(254, 114, 76);
+                width: 40px;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                @media (max-width:576px) {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+            &_delete {
+                width: 30px;
+                height: 30px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+                @media (max-width:576px) {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+
+        }
+    }
+    &_top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &_link {
+            height: 38px;
+            width: 38px;
+            background: white;
+            box-shadow: 5px 10px 20px 0 rgba(211, 209, 216, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+        &_title {
+            font-weight: 600;
+            font-size: 36px;
+            line-height: 120%;
+            color: #000;
+        }
+    }
+}
