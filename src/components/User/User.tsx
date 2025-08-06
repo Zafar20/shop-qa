@@ -1,6 +1,6 @@
 import {FC, useState, } from 'react'
 import s from './User.module.scss'
-import ava from '../../assets/images/userPhoto.svg'
+import ava from '../../assets/images/userAva.svg'
 import menuIcon from '../../assets/images/menu-icon.svg'
 import cartIcon from '../../assets/images/cart-icon.svg'
 import userIcon from '../../assets/images/userIcon.svg'
