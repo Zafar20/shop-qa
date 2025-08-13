@@ -8,12 +8,12 @@ import logoutIcon from '../../assets/images/logout.svg'
 import useStore from '../../store/userStore'
 import { useNavigate } from 'react-router-dom'
 import UserSkeleton from './UserSkeleton'
-import { useAddAvatar } from '../../services/auth'
 import { NavLink } from 'react-router-dom'
 import CustomBtn from '../UI/CustomBtn'
 import cartStore from '../../store/cartStore'
 import useWindowSize from "../../hooks/hooks";
 import Modal from './Modal'
+import { useUserUpdatePhoto } from '../../services/auth'
 
 
 

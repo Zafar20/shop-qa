@@ -21,17 +21,35 @@ const Profile: React.FC = () => {
 
   const {
     register,
-    formState: { errors, isValid },
+    formState: { errors },
     handleSubmit,
+    watch,
     reset,
   } = useForm<IUpdateUser>({
     mode: "onBlur",
   });
 
+  const email = watch("email") || "";
+  const password = watch("password") || "";
+  const username = watch("username") || "";
+
+  const isAllTextFieldsFilled =
+    email.trim() !== "" && password.trim() !== "" && username.trim() !== "";
+  const isAllTextFieldsEmpty =
+    email.trim() === "" && password.trim() === "" && username.trim() === "";
+  const hasImage = Boolean(selectedFile);
+
+  const canSubmit =
+    (isAllTextFieldsFilled && !hasImage) || // все поля, без картинки
+    (hasImage && isAllTextFieldsEmpty) || // только картинка
+    (isAllTextFieldsFilled && hasImage); // все поля + картинка
+
   const onSubmit = async (data: IUpdateUser) => {
     try {
-      // Обновить текстовые поля
-      await updateUserMutation.mutateAsync({ data, id: user?.id });
+      // Обновить текстовые поля, если они заполнены
+      if (isAllTextFieldsFilled) {
+        await updateUserMutation.mutateAsync({ data, id: user?.id });
+      }
 
       // Обновить фото, если файл выбран
       if (selectedFile) {
@@ -48,6 +66,30 @@ const Profile: React.FC = () => {
     reset();
   };
 
+  const handleRemoveAvatar = async () => {
+    try {
+      setSelectedFile(null);
+      const img = document.getElementById("avatarPreview") as HTMLImageElement;
+      if (img) img.src = profilePhoto;
+
+      // Отправляем пустой FormData для удаления фото
+      const formData = new FormData();
+      formData.append("avatar", "");
+      await updatePhotoMutation.mutateAsync({ data: formData, id: user?.id });
+
+      console.log("Аватарка удалена");
+    } catch (error) {
+      console.error("Ошибка при удалении аватара:", error);
+    }
+  };
+
+  const avatarSrc =
+    selectedFile
+      ? URL.createObjectURL(selectedFile)
+      : user?.avatar
+      ? `https://prowebapi.tech${user.avatar}`
+      : profilePhoto;
+
   return (
     <Layout>
       <div className="form_block">
@@ -58,35 +100,21 @@ const Profile: React.FC = () => {
             type="mail"
             label="Ваш email"
             errors={errors?.email}
-            register={register("email", {
-              required: "Поле обязательно к заполнению",
-            })}
+            register={register("email")}
           />
           <CustomInput
             holder="пароль"
             type="password"
             label="Ваш пароль"
             errors={errors?.password}
-            register={register("password", {
-              required: "Поле обязательно к заполнению",
-              minLength: {
-                value: 8,
-                message: "Минимум 8 символов",
-              },
-            })}
+            register={register("password")}
           />
           <CustomInput
             holder="Имя"
             type="text"
             label="Ваше имя"
             errors={errors?.username}
-            register={register("username", {
-              required: "Поле обязательно к заполнению",
-              minLength: {
-                value: 8,
-                message: "Минимум 8 символов",
-              },
-            })}
+            register={register("username")}
           />
 
           <div className="form_avatar_block">
@@ -106,7 +134,9 @@ const Profile: React.FC = () => {
 
                   const reader = new FileReader();
                   reader.onloadend = () => {
-                    const img = document.getElementById("avatarPreview") as HTMLImageElement;
+                    const img = document.getElementById(
+                      "avatarPreview"
+                    ) as HTMLImageElement;
                     if (img) img.src = reader.result as string;
                   };
                   reader.readAsDataURL(file);
@@ -118,13 +148,30 @@ const Profile: React.FC = () => {
               onClick={() => fileInputRef.current?.click()}
               style={{ cursor: "pointer" }}
             >
-              <img id="avatarPreview" src={profilePhoto} />
+              <img id="avatarPreview" src={avatarSrc} />
             </div>
+
+            {(selectedFile || user?.avatar) && (
+              <button
+                type="button"
+                onClick={handleRemoveAvatar}
+                style={{
+                  background: "none",
+                  border: "none",
+                  color: "#ff4d4f",
+                  marginTop: "8px",
+                  cursor: "pointer",
+                  marginRight: 'auto'
+                }}
+              >
+                Удалить фото
+              </button>
+            )}
           </div>
 
           <CustomBtn
             text="Подтвердить"
-            // disabled={!isValid}
+            disabled={!canSubmit}
             width={248}
             height={60}
             ml="auto"
