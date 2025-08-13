@@ -81,7 +81,7 @@ const Register: React.FC = () => {
                  label="Ваша почта"
                  errors={errors?.email}
                  register={register('email', {
-                   required: true,
+                  required: "Поле обязательно к заполнению",
                  })}
               />
               <CustomInput
