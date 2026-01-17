@@ -87,7 +87,7 @@ const Profile: React.FC = () => {
     selectedFile
       ? URL.createObjectURL(selectedFile)
       : user?.avatar
-      ? `https://prowebapi.tech${user.avatar}`
+      ? `https://prowebtech.uz${user.avatar}`
       : profilePhoto;
 
   return (

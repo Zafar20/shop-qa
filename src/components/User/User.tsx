@@ -70,7 +70,7 @@ const User:FC = () => {
          <div className={s.user_info}>
           <div  className={s.user_avatar}>
           { !user?.avatar  && <img src={ava} alt=""/>}
-          { user?.avatar && <img src={avatarUrl || `https://prowebapi.tech${user?.avatar}`} alt="" className={s.user_img} />}
+          { user?.avatar && <img src={avatarUrl || `https://prowebtech.uz${user?.avatar}`} alt="" className={s.user_img} />}
           
           </div>
           <h2 className={s.user_name}>{user?.username}</h2>
