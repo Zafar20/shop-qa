@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUserUpdate, useUserUpdatePhoto } from "../../services/auth";
 import { IUpdateUser } from "../../types/types";
 import Layout from "../../layouts/EnterLayout";
@@ -178,6 +178,7 @@ const Profile: React.FC = () => {
           />
         </form>
       </div>
+      <Link to="/" className="link__back">Назад</Link>
     </Layout>
   );
 };

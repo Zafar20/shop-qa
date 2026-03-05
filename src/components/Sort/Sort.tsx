@@ -8,10 +8,13 @@ interface IOptions {
 }
 
 const options: IOptions[] = [
-  { value: '', label: 'товары' },
-  { value: 'price', label: 'Цене' },
-  { value: 'rating', label: 'Рейтингу' },
-  { value: 'title', label: 'Названию' }
+  { value: '', label: 'Сбросить' },
+  { value: 'price', label: 'Цене по asc' },
+  { value: '-price', label: 'Цене по des' },
+  { value: 'rating', label: 'Рейтингу по asc' },
+  { value: '-rating', label: 'Рейтингу по desc' },
+  { value: 'title', label: 'Названию asc' },
+  { value: '-title', label: 'Названию desc' }
 ];
 
 const Sort:FC = () => {
